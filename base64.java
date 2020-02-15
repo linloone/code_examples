@@ -3,33 +3,25 @@ import java.util.Scanner;
 
 public class base64
 {
-    // stole this from rain for convenience
-    private static int base10Index(String s){
-        try {
-            return Integer.parseInt(s);
-        }catch(NumberFormatException e) {
-            switch(s.toLowerCase()){
-            case("a"):{
-                return 10;
-            }
-            case("b"):{
-                return 11;
-            }
-            case("c"):{
-                return 12;
-            }
-            case("d"):{
-                return 13;
-            }
-            case("e"):{
-                return 14;
-            }
-            case("f"):{
-                return 15;
-            }
-            default:{
-                return -1;
-            }
+
+    private static int base10Index( String s )
+    {
+        try
+        {
+            return Integer.parseInt( s );
+        }
+        catch ( NumberFormatException e )
+        {
+            switch ( s.toLowerCase() )
+            {
+                case "a": return 0xa;
+                case "b": return 0xb;
+                case "c": return 0xc;
+                case "d": return 0xd;
+                case "e": return 0xe;
+                case "f": return 0xf;
+                
+                default:  return -1;
             }
         }
     }
@@ -138,7 +130,7 @@ public class base64
             int index = i * 2;
             
             byte val = 0;
-            val = (byte)(base10Index( String.valueOf(inp.charAt(index)) ) << 4);
+            val =  (byte)(base10Index( String.valueOf(inp.charAt(index)) ) << 4);
             val += (byte)base10Index( String.valueOf(inp.charAt(index+1)) );
             
             System.out.println("Adding " + val);
